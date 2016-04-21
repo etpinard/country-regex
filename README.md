@@ -8,13 +8,13 @@
 
 Hash map of country [ISO-3][5] code to regular expression identifier. Regular
 expression data is taken from [Vincent Arel-Bundock][6]'s [`countrycode`][7] R
-package (GPL-3 License).
+package (GPL-3 License). Bigs up! :beers:
 
 
 ## Install
 
 ```bash
-npm install npm-link-check
+npm install country-regex
 ```
 
 ## Usage

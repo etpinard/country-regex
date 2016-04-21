@@ -1,0 +1,31 @@
+{
+  "name": "country-regex",
+  "version": "1.0.0",
+  "description": "Hash map of country ISO-3 codes to regular expression identifiers ",
+  "main": "index.js",
+  "scripts": {
+    "make": "node make.js",
+    "test": "tap test.js",
+    "version": "npm run make && git add index.js",
+    "postversion": "git push"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/etpinard/country-regex.git"
+  },
+  "keywords": [
+    "country",
+    "regex",
+    "iso3"
+  ],
+  "author": "Étienne Tétreault-Pinard",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/etpinard/country-regex/issues"
+  },
+  "homepage": "https://github.com/etpinard/country-regex#readme",
+  "devDependencies": {
+    "csv-parse": "^1.0.4",
+    "tap": "^5.7.1"
+  }
+}

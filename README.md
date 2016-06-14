@@ -8,7 +8,7 @@
 
 Hash map of country [ISO-3][5] code to regular expression identifier. Regular
 expression data is taken from [Vincent Arel-Bundock][6]'s [`countrycode`][7] R
-package (GPL-3 License). Bigs up! :beers:
+package (GPL-3 License). Big ups! :beers:
 
 
 ## Install

@@ -1,6 +1,6 @@
 {
   "name": "country-regex",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Hash map of country ISO-3 codes to regular expression identifiers ",
   "main": "index.js",
   "scripts": {

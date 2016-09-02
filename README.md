@@ -1,6 +1,7 @@
 # country-regex
 
 [![npm version][1]][1a]
+[![gzip size][8]][1a]
 
 [![Build Status][2]][2a]
 [![Dependency Status][3]][3a]
@@ -44,3 +45,4 @@ countryRegex['USA'];
 [5]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3
 [6]: https://github.com/vincentarelbundock
 [7]: https://github.com/vincentarelbundock/countrycode
+[8]: https://badges.herokuapp.com/size/npm/country-regex/index.js?gzip=true

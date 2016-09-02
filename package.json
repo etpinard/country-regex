@@ -27,5 +27,9 @@
   "devDependencies": {
     "csv-parse": "^1.0.4",
     "tap": "^5.7.1"
+  },
+  "dependencies": {
+    "csv-parse": "^1.1.7",
+    "tap": "^7.0.0"
   }
 }

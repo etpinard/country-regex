@@ -4,8 +4,8 @@ const csvParse = require('csv-parse');
 
 const URL = 'https://raw.githubusercontent.com/vincentarelbundock/countrycode/master/data/countrycode_data.csv'
 const FILE = './index.js';
-const COL1 = 'iso3c';
-const COL2 = 'regex';
+const ISO3_COLNAME = 'iso3c'
+const REGEX_COLNAME = 'country.name.en.regex'
 
 var body = '';
 
@@ -29,12 +29,13 @@ function formatHash(data) {
   var hash = {};
 
   data.forEach((obj) => {
-    if(!obj[COL1]) return;
+    var iso3 = obj[ISO3_COLNAME]
+    var regex = obj[REGEX_COLNAME]
 
-    // ISO3 to regex
-    hash[obj[COL1]] = obj[COL2];
-  });
+    if (!iso3 || !regex) return
 
+    hash[iso3] = regex
+  })
   formatString(hash);
 }
 

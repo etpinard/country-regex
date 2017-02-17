@@ -7,8 +7,9 @@
     "make": "node make.js",
     "lint": "standard --fix",
     "test": "snazzy && tap test.js",
-    "version": "npm run make && git add index.js",
-    "postversion": "git push"
+    "preversion": "npm run make && npm test",
+    "version": "git add index.js",
+    "postversion": "node -e \"console.log('Version bumped and committed. If ok, `git push`')\""
   },
   "repository": {
     "type": "git",

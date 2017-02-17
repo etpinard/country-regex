@@ -25,7 +25,7 @@ var countryRegex = require('country-regex')
 // and then for example:
 countryRegex['USA']
 
-// contains 'united.?states|\\bu\\.?s\\.?a\\.?\\b|\\bu\\.?s\\.?\\b(?!.*islands)'
+// => 'united.?states\\b(?!.*islands)|\\bu\\.?s\\.?a\\.?\\b|^\\s*u\\.?s\\.?\\b(?!.*islands)'
 ```
 
 ## Credits

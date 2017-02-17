@@ -21,18 +21,20 @@ npm install country-regex
 ## Usage
 
 ```js
-var countryRegex = require('country-regex');
+var countryRegex = require('country-regex')
 
 // and then for example:
-countryRegex['USA'];
+countryRegex['USA']
 
-// contains 'united.?states|\\bu\\.?s\\.?a\\.?\\b|\\bu\\.?s\\.?\\b(?!.*islands)'
+// => 'united.?states\\b(?!.*islands)|\\bu\\.?s\\.?a\\.?\\b|^\\s*u\\.?s\\.?\\b(?!.*islands)'
 ```
 
 ## Credits
 
-2016 Étienne Tétreault-Pinard. MIT License
+2017 Étienne Tétreault-Pinard. MIT License
 
+[![Standard - JavaScript Style
+Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
 [1]: https://badge.fury.io/js/country-regex.svg
 [1a]: https://badge.fury.io/js/country-regex

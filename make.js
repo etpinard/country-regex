@@ -1,65 +1,68 @@
-const fs = require('fs');
-const https = require('https');
-const csvParse = require('csv-parse');
+const fs = require('fs')
+const https = require('https')
+const csvParse = require('csv-parse')
 
 const URL = 'https://raw.githubusercontent.com/vincentarelbundock/countrycode/master/data/countrycode_data.csv'
-const FILE = './index.js';
-const COL1 = 'iso3c';
-const COL2 = 'regex';
+const FILE = './index.js'
+const ISO3_COLNAME = 'iso3c'
+const REGEX_COLNAME = 'country.name.en.regex'
 
-var body = '';
+var body = ''
 
+https.get(URL, function (res) {
+  res.on('data', (chunk) => { body += chunk })
 
-https.get(URL, function(res) {
-  res.on('data', (chunk) => { body += chunk; });
-
-  res.on('end', parse);
+  res.on('end', parse)
 })
-.on('error', (err) => { throw err; });
+.on('error', (err) => { throw err })
 
-function parse() {
+function parse () {
   csvParse(body, { columns: true }, (err, data) => {
-    if(err) throw err;
+    if (err) throw err
 
-    formatHash(data);
-  });
+    formatHash(data)
+  })
 }
 
-function formatHash(data) {
-  var hash = {};
+function formatHash (data) {
+  var hash = {}
 
   data.forEach((obj) => {
-    if(!obj[COL1]) return;
+    var iso3 = obj[ISO3_COLNAME]
+    var regex = obj[REGEX_COLNAME]
 
-    // ISO3 to regex
-    hash[obj[COL1]] = obj[COL2];
-  });
+    if (!iso3 || !regex) return
 
-  formatString(hash);
+    hash[iso3] = regex
+  })
+
+  formatString(hash)
 }
 
-function formatString(hash) {
-  var strHash = JSON.stringify(hash, null, 2);
-  var lines = strHash.split('\n');
+function formatString (hash) {
+  var strHash = JSON.stringify(hash, null, 2)
+  var lines = strHash.split('\n')
 
   // remove "" in props
+  // replace " for '
   lines = lines.map((line, i) => {
-    if(i === 0 || i === lines.length-1) return line;
+    if (i === 0 || i === lines.length - 1) return line
 
-    var parts = line.split(':');
-    var left = parts[0].replace(/"/g, '');
+    var parts = line.split(':')
+    var lhs = parts[0].replace(/"/g, '')
+    var rhs = parts.slice(1).join('').replace(/"/g, "'")
 
-    return left + ':' + parts[1];
-  });
+    return lhs + ':' + rhs
+  })
 
   // make CommonJS module
-  var str = 'module.exports = ' + lines.join('\n') + ';\n';
+  var str = 'module.exports = ' + lines.join('\n') + '\n'
 
-  write(str);
+  write(str)
 }
 
-function write(str) {
+function write (str) {
   fs.writeFile(FILE, str, (err) => {
-    if(err) throw err;
+    if (err) throw err
   })
 }

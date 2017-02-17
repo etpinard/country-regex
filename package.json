@@ -1,13 +1,15 @@
 {
   "name": "country-regex",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Hash map of country ISO-3 codes to regular expression identifiers ",
   "main": "index.js",
   "scripts": {
     "make": "node make.js",
-    "test": "tap test.js",
-    "version": "npm run make && git add index.js",
-    "postversion": "git push"
+    "lint": "standard --fix",
+    "test": "snazzy && tap test.js",
+    "preversion": "npm run make && npm test",
+    "version": "git add index.js",
+    "postversion": "node -e \"console.log('Version bumped and committed. If ok, `git push`')\""
   },
   "repository": {
     "type": "git",
@@ -25,7 +27,9 @@
   },
   "homepage": "https://github.com/etpinard/country-regex#readme",
   "devDependencies": {
-    "csv-parse": "^1.1.7",
-    "tap": "^7.0.0"
+    "csv-parse": "^1.2.0",
+    "snazzy": "^6.0.0",
+    "standard": "^8.6.0",
+    "tap": "^10.1.1"
   }
 }

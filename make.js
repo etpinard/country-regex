@@ -44,14 +44,16 @@ function formatString(hash) {
   var lines = strHash.split('\n');
 
   // remove "" in props
+  // replace " for '
   lines = lines.map((line, i) => {
-    if(i === 0 || i === lines.length-1) return line;
+    if (i === 0 || i === lines.length - 1) return line
 
-    var parts = line.split(':');
-    var left = parts[0].replace(/"/g, '');
+    var parts = line.split(':')
+    var lhs = parts[0].replace(/"/g, '')
+    var rhs = parts.slice(1).join('').replace(/"/g, "'")
 
-    return left + ':' + parts[1];
-  });
+    return lhs + ':' + rhs
+  })
 
   // make CommonJS module
   var str = 'module.exports = ' + lines.join('\n') + ';\n';

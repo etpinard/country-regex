@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/etpinard/country-regex#readme",
   "devDependencies": {
-    "csv-parse": "^1.2.0",
+    "csv-parse": "^4.6.5",
     "snazzy": "^6.0.0",
     "standard": "^8.6.0",
     "tap": "^10.1.1"
